@@ -12,6 +12,9 @@
             <directory>tests/Feature</directory>
         </testsuite>
     </testsuites>
+    <logging>
+        <junit outputFile="build/logs/clover.xml"/>
+    </logging>
     <source>
         <include>
             <directory>app</directory>
