@@ -1,9 +1,7 @@
 
 
 # Password-Manager
-[![Coverage Status](https://coveralls.io/repos/github/LURZU/password-blog-M1-ynov/badge.svg?branch=main)](https://coveralls.io/github/lurzu/repository?branch=main)
-
-# Titre du Projet Laravel
+[![Coverage Status](https://coveralls.io/repos/github/LURZU/password-blog-M1-ynov/badge.svg?branch=master)](https://coveralls.io/github/lurzu/password-blog-M1-ynov?branch=master)
 
 ## Description
 
