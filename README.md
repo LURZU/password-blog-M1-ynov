@@ -2,6 +2,15 @@
 
 # Password-Manager
 [![Coverage Status](https://coveralls.io/repos/github/LURZU/password-blog-M1-ynov/badge.svg?branch=master)](https://coveralls.io/github/lurzu/password-blog-M1-ynov?branch=master)
+<<<<<<< HEAD
+=======
+
+## Technologie
+- Laravel
+- docker
+- MySQL
+- PHPUnit
+>>>>>>> 6959161a4a751ef7d6a3b50926f68657809d95f6
 
 ## Description
 
