@@ -3,6 +3,12 @@
 # Password-Manager
 [![Coverage Status](https://coveralls.io/repos/github/LURZU/password-blog-M1-ynov/badge.svg?branch=main)](https://coveralls.io/github/lurzu/repository?branch=main)
 
+## Technologie
+- Laravel
+- docker
+- MySQL
+- PHPUnit
+
 ## Description
 
 Breve description du projet et de ses fonctionnalités.
