@@ -1,22 +1,15 @@
 language: php
 php:
-  - '8.2' # Assurez-vous d'utiliser la version PHP appropriée pour votre projet
-
-services:
-  - mysql
-
-before_install:
-  - sudo apt-get update
-  - sudo apt-get install -y libonig-dev
+  - '8.2'
 
 before_script:
   - cp .env.travis .env
   - composer self-update
   - composer install --no-interaction
   - php artisan key:generate
-  - php artisan migrate
 
 script:
+  - php artisan migrate
   - vendor/bin/phpunit --coverage-text --coverage-clover build/logs/clover.xml
 
 after_success:
