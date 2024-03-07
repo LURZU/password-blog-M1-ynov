@@ -1,15 +1,18 @@
 language: php
 php:
-  - '8.2'
+  - '8.2' # Utilisez la version PHP appropriée
 
 before_script:
-  - rm -rf composer.lock
-  - composer install
+  - cp .env.travis .env || true # Copie si .env.travis existe, sinon continue
+  - sed -i 's/DB_CONNECTION=mysql/DB_CONNECTION=sqlite/g' .env
+  - sed -i 's/DB_DATABASE=homestead/DB_DATABASE=:memory:/g' .env
+  - composer self-update
+  - composer install --no-interaction
+  - php artisan key:generate
 
 script:
-  - mkdir -p build/logs
-  - vendor/bin/phpunit -c phpunit.xml
+  - php artisan migrate
+  - vendor/bin/phpunit --coverage-text --coverage-clover build/logs/clover.xml
 
 after_success:
   - travis_retry php vendor/bin/coveralls
-  - travis_retry php vendor/bin/coveralls -v
