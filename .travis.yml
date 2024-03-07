@@ -3,14 +3,13 @@ php:
   - '8.2'
 
 before_script:
-  - cp .env.travis .env
-  - composer self-update
-  - composer install --no-interaction
-  - php artisan key:generate
+  - rm -rf composer.lock
+  - composer install
 
 script:
-  - php artisan migrate
-  - vendor/bin/phpunit --coverage-text --coverage-clover build/logs/clover.xml
+  -mkdir -p build/logs
+  - vendor/bin/phpunit -c phpunit.xml
 
 after_success:
   - travis_retry php vendor/bin/coveralls
+  - travis_retry php vendor/bin/coveralls -v
