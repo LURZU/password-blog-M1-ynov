@@ -15,12 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('base');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::prefix('/dashboard')->name('dashboard.')->group(function() {
+    Route::get('/', [\App\Http\Controllers\dashboard\Dashboardcontroller::class, 'index'])->name('index');
+    Route::get('/password', [\App\Http\Controllers\dashboard\PasswordDashboard::class, 'render'])->name('password');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -33,7 +34,7 @@ Route::prefix('/blog')->name('blog.')->controller(\App\Http\Controllers\PostCont
     Route::get('/new', 'create')->name('create');;
     Route::post('/new', 'store')->name('store');
     Route::get('/{post}/edit', 'edit')->name('edit');
-    Route::post('/{post}/edit', 'update')->name('update');;
+    Route::put('/{post}/edit', 'update')->name('update');;
     Route::get('/{slug}-{post}', 'show')->where([
         'post' => '[0-9]+',
         'slug' => '[a-z0-9\-]+'

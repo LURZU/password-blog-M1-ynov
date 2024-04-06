@@ -1,6 +1,9 @@
 <div class="max-w-md mx-auto">
-    <form action="" method="post" class="bg-white p-6 rounded-lg shadow-lg" enctype="multipart/form-data">
+    <form action="{{ $post->id ? route('blog.update', $post->id) : route('blog.store') }}" method="post" class="bg-white p-6 rounded-lg shadow-lg" enctype="multipart/form-data">
         @csrf
+        @if($post->id)
+            @method('PUT')
+        @endif
         <div class="mb-4">
             <label class="block text-gray-700 font-bold mb-2" for="name">
                 Titre
@@ -57,7 +60,7 @@
 
         <div class="mb-4">
             @php
-                $tagsId = $post->tags->pluck('id');   
+                $tagsId = $post->tags->pluck('id');
             @endphp
             <label class="block text-gray-700 font-bold mb-2" for="tag">
                 Tag
@@ -71,7 +74,7 @@
                 <p class="text-red-500 text-xs italic">{{ $message }}</p>
             @enderror
         </div>
-        
+
         <div class="text-center">
             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                 @if($post->id)
