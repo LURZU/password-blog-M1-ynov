@@ -1,45 +1,42 @@
-
-
 # Password-Manager
 [![Coverage Status](https://coveralls.io/repos/github/LURZU/password-blog-M1-ynov/badge.svg?branch=master)](https://coveralls.io/github/lurzu/password-blog-M1-ynov?branch=master)
 
-## Technologie
+## Technology
 - Laravel
-- docker
+- Docker
 - MySQL
 - PHPUnit
 
-
 ## Description
 
-Breve description du projet et de ses fonctionnalités.
+Blog + Password Manager
 
-## Prérequis
+## Prerequisites
 
 - Docker
 - Docker Compose
 
 ## Installation
 
-1. Clonez le dépôt :
+1. Clone the repository:
 
     ```bash
     git clone https://yourrepository.com/project.git
     ```
 
-2. Allez dans le dossier du projet :
+2. Navigate to the project directory:
 
     ```bash
     cd project
     ```
 
-3. Copiez le fichier `.env.example` en `.env` et ajustez les configurations selon votre environnement :
+3. Copy the `.env.example` file to `.env` and adjust the configurations according to your environment:
 
     ```bash
     cp .env.example .env
     ```
 
-4. Lancez les conteneurs Docker :
+4. Start the Docker containers:
 
     ```bash
     docker-compose up -d
@@ -47,10 +44,14 @@ Breve description du projet et de ses fonctionnalités.
 
 ## Configuration
 
-1. Installez les dépendances PHP :
+1. Install PHP dependencies:
 
     ```bash
     docker-compose exec app composer install
     ```
 
-2. Générez une clé pour
+2. Generate a key for the application:
+
+    ```bash
+    docker-compose exec app php artisan key:generate
+    ```

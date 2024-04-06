@@ -1,15 +1,14 @@
 language: php
 php:
-  - '8.2'
+  - 8.3
+os: linux
 
 before_script:
   - rm -rf composer.lock
   - composer install
-
 script:
   - mkdir -p build/logs
   - vendor/bin/phpunit -c phpunit.xml
-
 after_success:
   - travis_retry php vendor/bin/coveralls
   - travis_retry php vendor/bin/coveralls -v
