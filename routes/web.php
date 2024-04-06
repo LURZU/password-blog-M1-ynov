@@ -41,4 +41,6 @@ Route::prefix('/blog')->name('blog.')->controller(\App\Http\Controllers\PostCont
     ])->name('show');
 });
 
+//test
+
 require __DIR__.'/auth.php';
