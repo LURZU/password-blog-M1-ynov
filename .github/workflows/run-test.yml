@@ -38,7 +38,7 @@ jobs:
       - name: Install Node.js dependencies and build assets
         run: |
           npm install
-          npm run build  # Adjust if your build command is different
+          npm run build
 
       - name: Setup SQLite Database
         run: |
