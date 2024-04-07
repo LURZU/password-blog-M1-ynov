@@ -30,6 +30,16 @@ jobs:
       - name: Install Composer dependencies
         run: composer install -n --prefer-dist
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Specify the Node.js version you need
+
+      - name: Install Node.js dependencies and build assets
+        run: |
+          npm install
+          npm run build  # Adjust if your build command is different
+
       - name: Setup SQLite Database
         run: |
           mkdir -p database
