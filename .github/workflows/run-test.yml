@@ -22,7 +22,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'  # Change to 8.2
+          php-version: '8.2'  # Use PHP 8.2
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv
           coverage: xdebug
           tools: phpunit
@@ -30,8 +30,14 @@ jobs:
       - name: Install Composer dependencies
         run: composer install -n --prefer-dist
 
+      - name: Setup SQLite Database
+        run: |
+          mkdir -p database
+          touch database/test.sqlite
+          php artisan migrate --env=testing
+
       - name: Run tests and generate coverage
-        run: php artisan test --coverage-clover=coverage.xml
+        run: php artisan test --coverage-clover=coverage.xml --env=testing
         env:
           XDEBUG_MODE: coverage
 
