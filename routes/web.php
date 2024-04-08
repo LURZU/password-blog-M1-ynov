@@ -23,12 +23,14 @@ Route::middleware('auth')->prefix('/dashboard')->name('dashboard.')->group(funct
     Route::get('/', [\App\Http\Controllers\dashboard\Dashboardcontroller::class, 'index'])->name('index');
     Route::get('/password', [\App\Http\Controllers\dashboard\PasswordDashboard::class, 'render'])->name('password');
     Route::get('/password/{categoryId}/clients', [DataClientsController::class, 'showCategoryClients'])->name('clients');
+    Route::get('/blog', [\App\Http\Controllers\PostController::class, 'dasboard'])->name('blog');
 });
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/password', [\App\Http\Controllers\dashboard\PasswordDashboard::class, 'render'])->name('password.render');
 });
 
 Route::prefix('/blog')->name('blog.')->controller(\App\Http\Controllers\PostController::class)->group(function () {
@@ -41,6 +43,7 @@ Route::prefix('/blog')->name('blog.')->controller(\App\Http\Controllers\PostCont
         'post' => '[0-9]+',
         'slug' => '[a-z0-9\-]+'
     ])->name('show');
+    Route::delete('/blog/{id}', [PostController::class, 'destroy'])->name('destroy');
 });
 
 //test
