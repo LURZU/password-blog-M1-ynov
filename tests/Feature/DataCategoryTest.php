@@ -1,9 +1,7 @@
 <?php
 
 
-use App\Models\Category;
-use App\Models\Post;
-use App\Models\Tag;
+use App\Models\DataCategory;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
