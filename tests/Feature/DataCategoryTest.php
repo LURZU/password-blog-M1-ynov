@@ -16,7 +16,7 @@ class DataCategoryTest extends TestCase
         $user = User::factory()->create();
 
         $this->actingAs($user)
-            ->get(route('your-route-name')) // Assurez-vous que la route mène à la page contenant le composant Livewire
+            ->get(route('dashboard.password')) // Assurez-vous que la route mène à la page contenant le composant Livewire
             ->assertStatus(200)
             ->assertSeeLivewire('password.data-category-component');
     }
