@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire\Password;
 
 use Livewire\Component;
 use App\Models\DataCategory;
@@ -11,12 +11,16 @@ class CategoryEditForm extends Component
     public $name;
     public $description;
 
+    protected $listeners = ['editCategory' => 'handleEditCategory'];
+
     public function mount(DataCategory $category)
     {
         $this->category = $category;
         $this->name = $category->name;
         $this->description = $category->description;
     }
+
+
 
     public function update()
     {
@@ -30,13 +34,13 @@ class CategoryEditForm extends Component
             'description' => $this->description,
         ]);
 
-        $this->emit('categoryUpdated');
-        $this->dispatchBrowserEvent('close-modal');
+        $this->dispatch('categoryUpdated');
+        $this->dispatch('close-modal');
     }
 
 
     public function render()
     {
-        return view('livewire.category-edit-form');
+        return view('livewire.password.category-edit-form');
     }
 }

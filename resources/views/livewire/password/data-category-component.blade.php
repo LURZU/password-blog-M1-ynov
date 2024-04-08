@@ -1,57 +1,66 @@
-<div>
-    <!-- Search Bar -->
-    <div class="mb-4">
-        <input type="text" wire:model="search" placeholder="Recherche..." class="p-2 border rounded">
-    </div>
+<div x-data="{ showCreateModal: false, showEditModal: false }">
+    <button @click="showCreateModal = true" class="mb-4 p-2 bg-blue-800 text-white rounded flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+        </svg>
+        Créer une nouvelle catégorie
+    </button>
 
-    <!-- Edit/Create Form -->
-    <div class="mb-4 p-4 border rounded">
-        <div>
-            <input type="text" wire:model="name" placeholder="Nom de la catégorie" class="p-2 border rounded w-full mb-2">
-            <textarea wire:model="description" placeholder="Description" class="p-2 border rounded w-full mb-2"></textarea>
-        </div>
-        <div>
-            @if($categoryToEdit)
-                <button wire:click="update" class="p-2 bg-blue-500 text-white rounded">Mettre à jour</button>
-            @else
-                <button wire:click="create" class="p-2 bg-green-500 text-white rounded">Créer</button>
-            @endif
-        </div>
-    </div>
-
-    <div x-data="{ showModal: false }">
-        <input type="text" wire:model="search" placeholder="Recherche..." class="p-2 border rounded">
-        <div class="grid grid-cols-3 gap-4 mt-4">
-            @foreach($categories as $category)
-                <div class="card border rounded shadow p-4">
-                    <h5 class="card-title text-lg font-bold">{{ $category->name }}</h5>
-                    <p class="card-text">{{ $category->description }}</p>
-                    <button class="btn bg-blue-500 text-white rounded p-2" @click="showModal = true; $wire.edit({{ $category->id }})">Modifier</button>
-                    <button wire:click="delete({{ $category->id }})" class="p-1 bg-red-500 text-white rounded">Supprimer</button>
-                </div>
-            @endforeach
-        </div>
-
-        <!-- Pagination -->
-        <div class="mt-4">
-            {{ $categories->links('pagination::bootstrap-4') }}
-        </div>
-
-        <!-- Modal de modification -->
-        <div x-show="showModal" @edit-category.window="showModal = $event.detail" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="modal">
-            <div class="relative top-20 mx-auto p-5 border w-1/3 shadow-lg rounded-md bg-white">
-                <div @click.away="showModal = false" class="overflow-hidden">
-                    @if($categoryToEdit)
-                        @livewire('password.category-edit-form', ['category' => $categoryToEdit], key($categoryToEdit->id))
-                    @endif
+    <!-- Modal pour la création -->
+    <div x-show="showCreateModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50" x-cloak>
+        <div class="relative top-20 mx-auto p-5 border w-1/3 shadow-lg rounded-md bg-white">
+            <div @click.away="showCreateModal = false" class="overflow-hidden">
+                <div class="mb-4 p-4 border rounded">
+                    <input type="text" wire:model="newName" placeholder="Nom de la catégorie" class="p-2 border rounded w-full mb-2">
+                    <textarea wire:model="newDescription" placeholder="Description" class="p-2 border rounded w-full mb-2"></textarea>
+                    <button wire:click="create" class="p-2 bg-blue-800 text-white rounded">
+                        Créer
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Search Bar -->
+    <div class="mb-4">
+        <input type="text" wire:model.live="search" placeholder="Recherche..." class="p-2 border rounded">
+        <p class="italic text-xs">Search term: {{ $search }}</p>
+    </div>
+
+    <!-- Liste des catégories -->
+    <div class="grid grid-cols-3 gap-4 mt-4">
+        @foreach($categories as $category)
+
+            <div class="card relative border rounded shadow p-4 bg-white z-0" wire:key="{{$category->id}}">
+                <a href="{{ route('dashboard.clients', ['categoryId' => $category->id]) }}">
+                <h5 class="card-title text-lg font-bold">{{ $category->name }}</h5>
+                <p class="card-text">{{ $category->description }}</p>
+                <button class="btn bg-blue-500 text-white rounded p-2 mt-5 flex items-center z-50 relative bottom-0 right-0" @click="showEditModal = true; $wire.edit({{ $category->id }})">
+                    Modifier
+                </button>
+                <button wire:click="delete({{ $category->id }})" class="absolute top-1 right-1 p-1 bg-red-500 text-white rounded flex items-center justify-center ">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                </a>
+            </div>
+        @endforeach
+    </div>
 
     <!-- Pagination -->
     <div class="mt-4">
         {{ $categories->links('pagination::bootstrap-4') }}
+    </div>
+
+    <!-- Modal de modification -->
+    <div x-show="showEditModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" x-cloak>
+        <div class="relative top-20 mx-auto p-5 border w-1/3 shadow-lg rounded-md bg-white">
+            <div @click.away="showEditModal = false" class="overflow-hidden">
+                @if($categoryToEdit)
+                    @livewire('password.category-edit-form', ['category' => $categoryToEdit], key($categoryToEdit->id))
+                @endif
+            </div>
+        </div>
     </div>
 </div>

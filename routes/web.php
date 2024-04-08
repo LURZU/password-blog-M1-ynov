@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\dashboard\password\DataClientsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,12 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('base');
-});
+    return view('layouts.accueil');
+})->name('home');
 
-Route::prefix('/dashboard')->name('dashboard.')->group(function() {
+Route::middleware('auth')->prefix('/dashboard')->name('dashboard.')->group(function() {
     Route::get('/', [\App\Http\Controllers\dashboard\Dashboardcontroller::class, 'index'])->name('index');
     Route::get('/password', [\App\Http\Controllers\dashboard\PasswordDashboard::class, 'render'])->name('password');
+    Route::get('/password/{categoryId}/clients', [DataClientsController::class, 'showCategoryClients'])->name('clients');
 });
 
 Route::middleware('auth')->group(function () {

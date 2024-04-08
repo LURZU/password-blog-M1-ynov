@@ -14,12 +14,12 @@ return new class extends Migration
         // Exemple pour la migration de data_clients
         Schema::create('data_clients', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('data_category_id'); // Relier les clients aux catégories
             $table->string('name');
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->text('address')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('data_category_id')->references('id')->on('data_categories')->onDelete('cascade'); // Assurer l'intégrité référentielle
             $table->timestamps();
         });
 

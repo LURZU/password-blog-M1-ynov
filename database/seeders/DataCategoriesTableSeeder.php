@@ -14,9 +14,9 @@ class DataCategoriesTableSeeder extends Seeder
     public function run(): void
     {
         DB::table('data_categories')->insert([
-            ['name' => 'Personal', 'description' => 'Personal information'],
-            ['name' => 'Work', 'description' => 'Work-related information'],
-            ['name' => 'Financial', 'description' => 'Financial information'],
+            ['name' => 'Personal', 'description' => 'Personal information', 'user_id' => 1],
+            ['name' => 'Health', 'description' => 'Health-related information', 'user_id' => 1],
+            ['name' => 'Work', 'description' => 'Work-related information', 'user_id' => 2],
         ]);
     }
 }

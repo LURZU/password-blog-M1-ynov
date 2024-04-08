@@ -14,7 +14,7 @@ class DataClientsTableSeeder extends Seeder
     public function run(): void
     {
         DB::table('data_clients')->insert([
-            'user_id' => 1, // assuming the user_id from UsersTableSeeder
+            'data_category_id' => 1, // assuming the user_id from UsersTableSeeder
             'name' => 'Client 1',
             'email' => 'client1@example.com',
             'phone' => '1234567890',
