@@ -12,8 +12,11 @@ class DataClient extends Model
     use HasFactory;
 
     protected $fillable = [
-        'type',
-        'value',
+        'name',
+        'email',
+        'phone',
+        'address',
+        'data_category_id',
     ];
 
     public function category()

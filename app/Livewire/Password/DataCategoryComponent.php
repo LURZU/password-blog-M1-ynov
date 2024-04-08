@@ -43,8 +43,6 @@ class DataCategoryComponent extends Component
 
     public function render()
     {
-        // Supposons que `search` est une méthode statique dans le modèle DataCategory
-        // qui retourne un Builder, alors vous pouvez continuer à chaîner les appels de méthode
         $query = DataCategory::search($this->search);
 
         // Si vous voulez filtrer les catégories pour l'utilisateur connecté uniquement
