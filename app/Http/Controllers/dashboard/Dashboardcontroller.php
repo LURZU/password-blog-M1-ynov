@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 class Dashboardcontroller extends Controller
 {
     public function index() {
-        return view('dashboard.index');
+        if(auth()->user()->hasRole('admin')) {
+            return view('dashboard.index');
+        } else {
+            return redirect()->route('home');
+        }
     }
 }

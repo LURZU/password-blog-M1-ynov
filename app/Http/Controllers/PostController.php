@@ -40,6 +40,10 @@ class PostController extends Controller
         return view('blog.index', ['posts' => Post::with('tags', 'category')->paginate(6)]);
     }
 
+    public function dasboard(): View {
+        return view('dashboard.blog.show', ['posts' => Post::with('tags', 'category')->paginate(6)]);
+    }
+
     public function show(string $slug, Post $post): RedirectResponse | View | Post
     {
         if($post->slug !== $slug) {
@@ -83,5 +87,13 @@ class PostController extends Controller
             'slug' => $post->slug,
             'post' => $post->id
         ])->with('success', 'Article modifié avec succès !');
+    }
+
+    public function destroy($id)
+    {
+        $post = Post::findOrFail($id);
+        $post->delete();
+
+        return redirect()->route('blog.index')->with('success', 'Article supprimé avec succès !');
     }
 }

@@ -14,6 +14,7 @@ return new class extends Migration
         // Exemple pour la migration de data_clients
         Schema::create('data_categories', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->text('description')->nullable();
             $table->timestamps();
