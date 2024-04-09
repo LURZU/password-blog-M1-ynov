@@ -31,7 +31,7 @@ class DataCategoryComponent extends Component
 
         $this->newName = '';
         $this->newDescription = '';
-        $this->dispatch('close-create-modal'); // Fermer le modal après création
+        $this->dispatch('close-create-modal');
     }
 
 
