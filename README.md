@@ -57,20 +57,20 @@ Blog + Password Manager
     ```
 2. Install all dependance on docker image
    
-```bash
+    ```bash
     compose update
     ```
 
 3. Generate a key for the application:
 
     ```bash
- php artisan key:generate
+     php artisan key:generate
     ```
 
 4. Migrate et seed database
     ```bash
- php artisan migrate
- php artisan db:seed
+     php artisan migrate
+     php artisan db:seed
     ```
 
 5. It's done, now it's working !
@@ -84,36 +84,49 @@ Blog + Password Manager
 2. Clone the repository:
 
     ```bash
-    git clone https://github.com/LURZU/password-blog-M1-ynov.git
+        git clone https://github.com/LURZU/password-blog-M1-ynov.git
     ```
 
 3. Navigate to the project directory:
 
     ```bash
-    cd password-blog-M1-ynov
+        cd password-blog-M1-ynov
     ```
 
 4. Copy the `.env.example` file to `.env` and adjust the configurations according to your environment:
 
     ```bash
-    cp .env.example .env
+        cp .env.example .env
     ```
 
 5. compose install
 
-6. compose update
 
-7. php artisan migrate
+6. Install all dependance on docker image
+   
+    ```bash
+    compose update
+    ```
 
-8. php artisan db:seed
+7. Generate a key for the application:
+
+    ```bash
+     php artisan key:generate
+    ```
+
+8. Migrate et seed database
+    ```bash
+     php artisan migrate
+     php artisan db:seed
+    ```
 
 ## Testing
 
 1. classic test
 
-```bash
-php artisan test
-```
+    ```bash
+        php artisan test
+    ```
 
 2. Testing with coverage
 
