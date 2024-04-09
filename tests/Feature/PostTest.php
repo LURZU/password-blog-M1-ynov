@@ -115,7 +115,7 @@ class PostTest extends TestCase
         $postData = [
             'name' => $post2->name,
             'content' => $post2->content,
-            'slug' => $post1->slug, // Utilisez le slug du premier post pour provoquer une erreur
+            'slug' => $post1->slug,
             'category_id' => $post2->category_id,
             'tags' => $post2->tags->pluck('id')->toArray()
         ];
