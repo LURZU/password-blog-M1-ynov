@@ -125,6 +125,14 @@ Blog + Password Manager
      php artisan db:seed
     ```
 
+9. Finally install all npm dependance and run it to have css working
+    ```bash
+     npm intall
+     npm run dev
+    ```
+
+10. It's done, now it's working !
+
 ## Testing
 
 1. classic test
