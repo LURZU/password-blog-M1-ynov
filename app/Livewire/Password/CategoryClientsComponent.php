@@ -16,10 +16,10 @@ class CategoryClientsComponent extends Component
     public $newClient = [];
     public $clientToEdit;
     public $editClient = [];
-    public $name; // Pour la modification
-    public $email; // Pour la modification
-    public $address; // Pour la modification
-    public $phone; // Pour la modification
+    public $name;
+    public $email;
+    public $address;
+    public $phone;
 
     public function mount($categoryId)
     {
