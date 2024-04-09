@@ -67,6 +67,16 @@ Blog + Password Manager
  php artisan key:generate
     ```
 
+4. Migrate et seed database
+    ```bash
+ php artisan migrate
+ php artisan db:seed
+    ```
+
+5. It's done, now it's working !
+
+
+
    ## Install without
 
 1. Install all the prerequirement to launch laravel
@@ -101,12 +111,13 @@ Blog + Password Manager
 
 1. classic test
 
-```
+```bash
 php artisan test
 ```
 
 2. Testing with coverage
-```
+
+```bash
 php artisan test --coverage
 ```
 
