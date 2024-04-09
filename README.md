@@ -27,7 +27,7 @@ Blog + Password Manager
 2. Navigate to the project directory:
 
     ```bash
-    cd project
+    cd password-blog-M1-ynov
     ```
 
 3. Copy the `.env.example` file to `.env` and adjust the configurations according to your environment:
