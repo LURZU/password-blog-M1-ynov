@@ -21,7 +21,7 @@ Blog + Password Manager
 1. Clone the repository:
 
     ```bash
-    git clone https://yourrepository.com/project.git
+    git clone https://github.com/LURZU/password-blog-M1-ynov.git
     ```
 
 2. Navigate to the project directory:
