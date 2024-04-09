@@ -49,7 +49,6 @@ class CategoryClientsComponent extends Component
         $this->dispatch('close-create-modal');
 
 
-        // Recharger les clients après la création
         $this->clients = DataClient::where('data_category_id', $this->categoryId)->get();
     }
 
