@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\DataCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
 
 class DataCategoryFactory extends Factory
 {
@@ -24,8 +25,7 @@ class DataCategoryFactory extends Factory
         return [
             'name' => $this->faker->word,
             'description' => $this->faker->sentence,
-            // Si votre modèle DataCategory a un user_id ou d'autres champs, les définir ici également
-            // 'user_id' => User::factory(), // Crée un utilisateur et l'associe si c'est nécessaire
+            'user_id' => User::factory(),
         ];
     }
 }
